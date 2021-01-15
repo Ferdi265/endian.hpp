@@ -1,0 +1,7 @@
+file(GLOB example_sources *.cpp)
+foreach(file IN LISTS example_sources)
+    get_filename_component(name ${file} NAME_WE)
+    add_executable(example_${name} ${file})
+    set_target_properties(example_${name} PROPERTIES OUTPUT_NAME ${name})
+    target_link_libraries(example_${name} PRIVATE libendian)
+endforeach()

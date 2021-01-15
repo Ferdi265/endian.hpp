@@ -11,11 +11,11 @@ struct UDPHeader {
     endian::net_uint16_t check;
 } __attribute__((packed));
 
-int main() {
-    const uint8_t packet[] = {
-        0xd1, 0x4b, 0x75, 0x30, 0x00, 0x12, 0x36, 0x55
-    };
+uint8_t packet[] = {
+    0xd1, 0x4b, 0x75, 0x30, 0x00, 0x12, 0x36, 0x55
+};
 
+int main() {
     const UDPHeader * header = reinterpret_cast<const UDPHeader *>(packet);
 
     assert(header->source == 53579);

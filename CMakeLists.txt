@@ -3,13 +3,25 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(libendian CXX)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+option(LIBENDIAN_DEFAULT_CXXFLAGS "enable default CXXFLAGS" OFF)
+option(LIBENDIAN_BUILD_TESTS "build test cases" OFF)
+option(LIBENDIAN_BUILD_EXAMPLES "build example binaries" OFF)
+
+if(LIBENDIAN_DEFAULT_CXXFLAGS)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+    set(CMAKE_CXX_STANDARD 14)
+    set(CMAKE_CXX_STANDARD_REQUIRED ON)
+    set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
 
 add_library(libendian INTERFACE)
 target_include_directories(libendian INTERFACE include/)
 
-enable_testing()
-add_subdirectory(test)
+if(LIBENDIAN_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(test)
+endif()
+
+if(LIBENDIAN_BUILD_EXAMPLES)
+    add_subdirectory(example)
+endif()
