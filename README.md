@@ -89,3 +89,33 @@ This library only works on systems with `CHAR_BIT == 8`.
 The native endianness is detected automatically. If it cannot be detected,
 `ENDIAN_HPP_NATIVE_BYTE_ORDER` can be defined to one of `Little`, `Big`, `PDP`,
 or `Network` to set the native endianness manually.
+
+## Example Usage
+
+```c++
+#include <cstdint>
+#include <iostream>
+#include <endian.hpp>
+
+ENDIAN_PACK(struct UDPHeader {
+    endian::net_uint16_t source;
+    endian::net_uint16_t dest;
+    endian::net_uint16_t len;
+    endian::net_uint16_t check;
+});
+
+uint8_t packet[] = {
+    0xd1, 0x4b, 0x75, 0x30, 0x00, 0x12, 0x36, 0x55
+};
+
+int main() {
+    const UDPHeader * header = reinterpret_cast<const UDPHeader *>(packet);
+
+    std::cout << "source port     = " << header->source << "\n";
+    std::cout << "dest port       = " << header->dest << "\n";
+    std::cout << "packet length   = " << header->len << "\n";
+    std::cout << "packet checksum = " << header->check << "\n";
+}
+```
+
+Further examples can be seen in the `examples/` and `tests/` directories.
