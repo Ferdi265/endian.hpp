@@ -19,9 +19,9 @@ target_include_directories(libendian INTERFACE include/)
 
 if(LIBENDIAN_BUILD_TESTS)
     enable_testing()
-    add_subdirectory(test)
+    add_subdirectory(tests)
 endif()
 
 if(LIBENDIAN_BUILD_EXAMPLES)
-    add_subdirectory(example)
+    add_subdirectory(examples)
 endif()
