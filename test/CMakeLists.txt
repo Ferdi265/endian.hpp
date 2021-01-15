@@ -1,0 +1,7 @@
+file(GLOB test_sources *.cpp)
+foreach(file IN LISTS test_sources)
+    get_filename_component(name ${file} NAME_WE)
+    add_executable(test_${name}_bin ${file})
+    target_link_libraries(test_${name}_bin PRIVATE libendian)
+    add_test(NAME test_${name} COMMAND test_${name}_bin)
+endforeach()
