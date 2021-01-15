@@ -72,6 +72,13 @@ using net_uint32_t = endian_int<ByteOrder::Network, uint32_t>;
 using net_uint64_t = endian_int<ByteOrder::Network, uint64_t>;
 ```
 
+The following macros are defined by this library:
+
+```c++
+/// portably define a packed structure
+#define ENDIAN_PACK(...) /* implementation-defined */
+```
+
 ## Limitations
 
 This library depends on C++14 features for `constexpr` support. It's most likely

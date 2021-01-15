@@ -267,7 +267,7 @@ constexpr T convert(T t) {
 }
 
 template <ByteOrder endian, typename T>
-_ENDIAN_PACK(struct endian_int {
+ENDIAN_PACK(struct endian_int {
     static_assert(std::is_integral<T>::value, "endian::endian_int only supports integral types");
     T raw;
 
@@ -343,6 +343,5 @@ _ENDIAN_PACK(struct endian_int {
 }
 
 #undef _ENDIAN_NATIVE_BYTE_ORDER
-#undef _ENDIAN_PACK
 
 #endif

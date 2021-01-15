@@ -10,9 +10,9 @@
 
 /// portable packed structs
 #if defined(_MSC_VER)
-#define _ENDIAN_PACK(...) __pragma(pack(push, 1)) __VA_ARGS__ __pragma(pack(pop))
+#define ENDIAN_PACK(...) __pragma(pack(push, 1)) __VA_ARGS__ __pragma(pack(pop))
 #else
-#define _ENDIAN_PACK(...) __VA_ARGS__ __attribute__((packed))
+#define ENDIAN_PACK(...) __VA_ARGS__ __attribute__((packed))
 #endif
 
 /// endian detection logic from Boost.Endian

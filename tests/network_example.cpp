@@ -4,12 +4,12 @@
 
 using endian::ByteOrder;
 
-struct UDPHeader {
+ENDIAN_PACK(struct UDPHeader {
     endian::net_uint16_t source;
     endian::net_uint16_t dest;
     endian::net_uint16_t len;
     endian::net_uint16_t check;
-} __attribute__((packed));
+});
 
 uint8_t packet[] = {
     0xd1, 0x4b, 0x75, 0x30, 0x00, 0x12, 0x36, 0x55
