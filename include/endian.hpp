@@ -10,9 +10,9 @@ namespace endian {
 
 /// identifiers for different byte orders
 enum class ByteOrder {
-    Little = 0,
-    Big = 1,
-    PDP = 2,
+    Little,
+    Big,
+    PDP,
 
     Network = Big,
     Native = _ENDIAN_NATIVE_BYTE_ORDER
@@ -35,8 +35,11 @@ constexpr T ntoh(T t) {
 }
 
 /// transparently wrap an integral type of the specified byte order
+///
+/// endian_int is a packed struct to allow use in network data structures
+/// without compiler warnings
 template <ByteOrder endian, typename T>
-struct endian_int;
+struct endian_int; /* packed */
 
 /// convenience type aliases
 using little_int8_t = endian_int<ByteOrder::Little, int8_t>;
