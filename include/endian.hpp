@@ -36,8 +36,7 @@ constexpr T ntoh(T t) {
 
 /// transparently wrap an integral type of the specified byte order
 ///
-/// endian_int is a packed struct to allow use in network data structures
-/// without compiler warnings
+/// endian_int is a packed struct to simplify use in network data structures
 template <ByteOrder endian, typename T>
 struct endian_int; /* packed */
 
