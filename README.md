@@ -10,7 +10,7 @@ The following types are defined by this library:
 
 ```c++
 /// identifiers for different byte orders
-enum class ByteOrder{
+enum class ByteOrder {
     Little,
     Big,
     PDP,
